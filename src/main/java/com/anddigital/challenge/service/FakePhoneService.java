@@ -4,7 +4,6 @@ import com.anddigital.challenge.exception.DuplicatedPhoneNumberException;
 import com.anddigital.challenge.exception.PhoneNumberNotFoundException;
 import com.anddigital.challenge.model.Phone;
 import com.anddigital.challenge.model.PhoneType;
-import org.springframework.context.annotation.DependsOn;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -52,7 +51,7 @@ public class FakePhoneService implements PhoneService{
     }
 
     @Override
-    public void setPhoneNumberActivation(String phoneNumber, boolean activated) throws PhoneNumberNotFoundException, DuplicatedPhoneNumberException {
+    public Phone setPhoneNumberActivation(String phoneNumber, boolean activated) throws PhoneNumberNotFoundException, DuplicatedPhoneNumberException {
         List<Phone> phonesWithPhoneNumber = Optional.of(phones)
                 .orElseGet(Collections::emptyList)
                 .stream()
@@ -65,6 +64,7 @@ public class FakePhoneService implements PhoneService{
             throw new DuplicatedPhoneNumberException(phoneNumber);
         }else{
             phonesWithPhoneNumber.get(0).setActivated(activated);
+            return phonesWithPhoneNumber.get(0);
         }
     }
 

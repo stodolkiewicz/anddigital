@@ -20,9 +20,11 @@ public class PhoneController {
     PhoneService phoneService;
 
     @Autowired
-    PhoneController(PhoneService phoneService){
+    public PhoneController(PhoneService phoneService){
         this.phoneService = phoneService;
     }
+
+    public PhoneController() {}
 
     @GetMapping("/phone/numbers")
     public ResponseEntity<List<?>> getAllPhoneNumbers(){

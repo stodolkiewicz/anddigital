@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface PhoneService {
     List<String> getAllPhoneNumbers();
-    void setPhoneNumberActivation(String phoneNumber, boolean activated) throws PhoneNumberNotFoundException, DuplicatedPhoneNumberException;
+    Phone setPhoneNumberActivation(String phoneNumber, boolean activated) throws PhoneNumberNotFoundException, DuplicatedPhoneNumberException;
     List<Phone> getAllPhones();
 }
